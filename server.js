@@ -1,3 +1,5 @@
+import { useEffect } from 'react';
+
 const PORT = 8000;
 const express = require("express");
 const cors = require("cors");
@@ -13,6 +15,35 @@ app.use(express.json());
 const geniusHeader = {
   Authorization: `Bearer ${process.env.GENIUS_ACCESS_TOKEN}`,
 };
+
+const spotifyAuthHeader = {
+  headers: {
+    Accept: "application/json",
+    "Content-Type": "application/x-www-form-urlencoded",
+  },
+};
+
+// spotify auth
+const spotifyToken = await axios.post(
+  "https://accounts.spotify.com/api/token",
+  {
+    client_id: process.env.SPOTIFY_CLIENT_ID,
+    client_secret: process.env.SPOTIFY_SECRET,
+    grant_type: "client_credentials",
+  },
+  spotifyAuthHeader
+);
+
+console.log(spotifyToken);
+
+const spotifyTokenHeader = {
+  Authorization: `Bearer ${spotifyToken.access_token}`
+}
+
+// spotify top global 50 playlist
+axios.get("https://api.spotify.com/playlists/37i9dQZEVXbMDoHDwVN2tF/tracks").then((response) => {
+
+})
 
 // retrieve songs that contain the lyric input typed in by user
 app.get(`/search/:lyric`, (req, res) => {

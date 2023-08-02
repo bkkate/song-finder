@@ -1,32 +1,12 @@
 import React, { createContext, useState } from "react";
 
-// export class Provider extends Component {
-//   state = {
-//     track_list: [
-
-//     ],
-//     heading: "Top 10 Tracks",
-//     searchInput: "",
-//   };
-
-//   render() {
-//     return (
-//       <Context.Provider value={this.state}>
-//         {this.props.children}
-//       </Context.Provider>
-//     );
-//   }
-// }
-
-// export const Consumer = Context.Consumer;
-
 const Context = createContext();
 
 function Provider({ children }) {
   const [tracks, setTracklist] = useState([
     {
       result: {
-        "id": 2388373,
+        id: 2388373,
         api_path: "/songs/2388373",
         artist_names: "Charlie Puth (Ft. Selena Gomez)",
         header_image_thumbnail_url:
@@ -46,7 +26,7 @@ function Provider({ children }) {
           header_image_url:
             "https://images.genius.com/097f2e009d2baafa2059743c1a2d755e.1000x333x1.jpg",
           id: 250301,
-          name: "Charlie Puth"
+          name: "Charlie Puth",
         },
       },
     },
@@ -84,6 +64,7 @@ function Provider({ children }) {
       },
     },
   ]);
+  const [spotifySongs, setSpotifySongs] = useState({});
   const [heading, setHeading] = useState("Top 10 Tracks");
 
   // gets tracks array as an input
@@ -95,8 +76,20 @@ function Provider({ children }) {
     setHeading(heading);
   };
 
+  const updateSpotifySongs = (spotifySongs) => {
+    setSpotifySongs(spotifySongs);
+  };
+
   return (
-    <Context.Provider value={{ tracks, heading, updateTracks, updateHeading }}>
+    <Context.Provider
+      value={{
+        tracks,
+        heading,
+        updateTracks,
+        updateHeading,
+        updateSpotifySongs,
+      }}
+    >
       {children}
     </Context.Provider>
   );
