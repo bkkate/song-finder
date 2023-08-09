@@ -1,9 +1,8 @@
-import { useEffect } from 'react';
-
 const PORT = 8000;
 const express = require("express");
 const cors = require("cors");
 const axios = require("axios");
+const qs = require("qs");
 
 require("dotenv").config();
 
@@ -16,34 +15,54 @@ const geniusHeader = {
   Authorization: `Bearer ${process.env.GENIUS_ACCESS_TOKEN}`,
 };
 
-const spotifyAuthHeader = {
-  headers: {
-    Accept: "application/json",
-    "Content-Type": "application/x-www-form-urlencoded",
-  },
-};
-
-// spotify auth
-const spotifyToken = await axios.post(
-  "https://accounts.spotify.com/api/token",
-  {
+// when search page first loads, load the top 50 spotify
+app.get(`/top-global`, async (req, res) => {
+  const requestHeader = {
     client_id: process.env.SPOTIFY_CLIENT_ID,
     client_secret: process.env.SPOTIFY_SECRET,
     grant_type: "client_credentials",
-  },
-  spotifyAuthHeader
-);
+  };
 
-console.log(spotifyToken);
+  // spotify auth (receiving access token)
+  // const spotifyToken = await axios
+  //   .post(
+  //     "https://accounts.spotify.com/api/token",
+  //     {
+  //       client_id: process.env.SPOTIFY_CLIENT_ID,
+  //       client_secret: process.env.SPOTIFY_SECRET,
+  //       grant_type: "client_credentials",
+  //     },
+  //     spotifyAuthHeader
+  //   );
 
-const spotifyTokenHeader = {
-  Authorization: `Bearer ${spotifyToken.access_token}`
-}
+  const spotifyToken = await axios.post(
+    "https://accounts.spotify.com/api/token",
+    qs.stringify(requestHeader),
+    {
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+    }
+  );
 
-// spotify top global 50 playlist
-axios.get("https://api.spotify.com/playlists/37i9dQZEVXbMDoHDwVN2tF/tracks").then((response) => {
+   
+  const spotifyTokenHeader = {
+    Authorization: `Bearer ${spotifyToken.data.access_token}`,
+  };
 
-})
+  console.log(spotifyTokenHeader);
+  // spotify top global 50 playlist
+  axios
+    .get("https://api.spotify.com/v1/playlists/37i9dQZEVXbMDoHDwVN2tF/", {
+      headers: spotifyTokenHeader,
+    })
+    .then((response) => {
+      console.log(response.data.tracks.items);
+      res.send(response.data.tracks.items);
+    })
+    .catch((err) => console.log(err.response.data));
+});
 
 // retrieve songs that contain the lyric input typed in by user
 app.get(`/search/:lyric`, (req, res) => {

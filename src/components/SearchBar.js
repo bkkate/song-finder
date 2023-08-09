@@ -2,11 +2,11 @@ import { useState, useContext } from "react";
 import Context from "../context.js";
 import "../style/SearchBar.css";
 import axios from "axios";
-import { FaHeadphonesAlt, FaMusic, FaPodcast} from "react-icons/fa";
+import { FaHeadphonesAlt, FaMusic, FaPodcast } from "react-icons/fa";
 
 const SearchBar = () => {
   const [input, setInput] = useState("");
-  const { tracks, updateTracks } = useContext(Context);
+  const { tracks, updateTracks, updateHeading } = useContext(Context);
 
   // change in keyboard input
   const handleChange = (event) => {
@@ -20,6 +20,8 @@ const SearchBar = () => {
       axios.get(`http://localhost:8000/search/${input}`).then((response) => {
         const songs = response.data;
         updateTracks(songs);
+        updateHeading("Search results");
+
         console.log(tracks);
       });
     } catch (err) {
@@ -30,20 +32,17 @@ const SearchBar = () => {
   return (
     <div className="box">
       <section className="search-section">
-        <p>
-         Search Lyrics!
-        </p>
+        <p>Search Lyrics!</p>
 
         <div className="input-container">
           <input
-            placeholder="Any lyric..."
+            placeholder="Type any lyric..."
             value={input}
             onChange={handleChange}
-          />    <button onClick={getMusic}>Search</button>
+            onSubmit={getMusic}
+          />{" "}
+          <button onClick={getMusic}>Search</button>
         </div>
- 
-      
-  
       </section>
     </div>
   );

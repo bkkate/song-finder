@@ -7,6 +7,7 @@ import SongInfoPage from "./pages/SongInfoPage";
 import { Provider } from "./context";
 
 function App() {
+
   return (
     <Provider>
       <React.Fragment>
