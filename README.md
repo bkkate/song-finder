@@ -13,11 +13,11 @@ The idea behind it: it's easy to search for songs with the correct title, but wh
 * a bit of tailwind css
 
 ### Highlights
-* When the page is first launched, it displays 20 of the Global Top 50 Spotify playlist tracks -- which is always up to date as it retrieves the most current list
+* When the page is first launched, it displays 20 of the Global Top 50 Spotify playlist tracks -- which is always up to date as it retrieves the most current list (more results with scrolling down)
   <img width="1442" alt="Screenshot 2023-08-10 at 5 10 30 PM" src="https://github.com/bkkate/song-finder/assets/118659136/96b469ae-7fce-43f1-888a-b35aaf0c6c4c">
 
-* Searching for partial lyrics gives the following example result
-  <img width="1456" alt="Screenshot 2023-08-10 at 5 11 20 PM" src="https://github.com/bkkate/song-finder/assets/118659136/753975b9-b2fb-4b45-8ca2-6c0e0ef84d64">
+* Searching for partial lyrics gives the following example result (more results with scrolling down)
+<img width="1452" alt="Screenshot 2023-08-10 at 5 15 40 PM" src="https://github.com/bkkate/song-finder/assets/118659136/44a19cbf-992e-405b-a56c-159d61342043">
 
 * Detailed info page with a youtube video embedded with more links
   <img width="958" alt="Screenshot 2023-08-10 at 5 12 39 PM" src="https://github.com/bkkate/song-finder/assets/118659136/5929f9a3-22d6-4870-a39e-948dbe3a8788">
