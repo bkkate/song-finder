@@ -1,70 +1,24 @@
-# Getting Started with Create React App
+## SongFinder app
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### Description
+The SongFinder website is a Single Page Application (SPA) built with React.js. This is my first mini project practicing vairous concepts in React as well as utilizing simple server side logic in Node with the Express framework. This application uses various third-party APIs to retrieve data regarding searched songs.
 
-## Available Scripts
+The idea behind it: it's easy to search for songs with the correct title, but what if you just remember the partial lyrics and can't think of the name or album of the song? With this simple-to-use application, you can simply search a part of the lyric (single word to phrases) that's stuck in your head, and it'll give you the top song matches that contain the searched lyrics. If you click on each track, you can get more info and watch a youtube video of the song as well as have access to the full lyrics.
 
-In the project directory, you can run:
 
-### `npm start`
+### Technologies & Frameworks used:
+* Node & Express
+* React.js
+* Third party APIs: Spotify, Genius, Youtube
+* a bit of tailwind css
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Highlights
+* When the page is first launched, it displays 20 of the Global Top 50 Spotify playlist tracks -- which is always up to date as it retrieves the most current list
+  <img width="1442" alt="Screenshot 2023-08-10 at 5 10 30 PM" src="https://github.com/bkkate/song-finder/assets/118659136/96b469ae-7fce-43f1-888a-b35aaf0c6c4c">
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+* Searching for partial lyrics gives the following example result
+  <img width="1456" alt="Screenshot 2023-08-10 at 5 11 20 PM" src="https://github.com/bkkate/song-finder/assets/118659136/753975b9-b2fb-4b45-8ca2-6c0e0ef84d64">
 
-### `npm test`
+* Detailed info page with a youtube video embedded with more links
+  <img width="958" alt="Screenshot 2023-08-10 at 5 12 39 PM" src="https://github.com/bkkate/song-finder/assets/118659136/5929f9a3-22d6-4870-a39e-948dbe3a8788">
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
