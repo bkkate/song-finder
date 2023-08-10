@@ -1,12 +1,11 @@
 import { useParams, useRef } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import YoutubeEmbed from "../components/YoutubeEmbed";
+// import YoutubeEmbed from "../components/YoutubeEmbed";
 import "../style/SongInfoPage.css";
 import HashLoader from "react-spinners/HashLoader";
 
 const SongInfoPage = () => {
-  // const divEl = useRef();
   const { id } = useParams();
   const [song, setSong] = useState({});
   const [loading, setLoading] = useState(false);
@@ -49,14 +48,14 @@ const SongInfoPage = () => {
         const arrOfMedia = response.data.media;
 
         arrOfMedia.forEach((media) => {
-          if (media.provider === "soundcloud") {
-            setSong((song) => {
-              return {
-                ...song,
-                "soundcloud-url": media.url,
-              };
-            });
-          }
+          // if (media.provider === "soundcloud") {
+          //   setSong((song) => {
+          //     return {
+          //       ...song,
+          //       "soundcloud-url": media.url,
+          //     };
+          //   });
+          // }
           if (media.provider === "youtube") {
             const videoId = media.url.slice(media.url.indexOf("=") + 1);
 
@@ -96,17 +95,18 @@ const SongInfoPage = () => {
             <div className="details">
               <div className="title"> {song.title} </div>
               <div className="meta-data">
-                <div className="meta"> Album: {song.album} </div>
+                <div className="meta"> <span className="subheading">Album: </span>{song.album} </div>
                 <div className="meta">
-                  <span>Artist: </span> {song.artist}{" "}
+                  <span className="subheading">Artist: </span> {song.artist}
                 </div>
-                <div className="meta"> {song.description} </div>
-                <div className="meta"> {song.releaseDate} </div>
+                <div className="meta description"> {song.description} </div>
+                <div className="meta"> <span className="subheading">Released: </span> {song.releaseDate} </div>
               </div>
             </div>
           </section>
 
-          <iframe
+          <section className="media">
+            <iframe
             width="550"
             height="300"
             src={`https://www.youtube.com/embed/${song["youtube-id"]}`}
@@ -115,15 +115,16 @@ const SongInfoPage = () => {
             title="Embedded youtube"
             className="youtube"
           />
-
-          <section className="links">
+{/* 
             <a className="soundcloud" href={song["soundcloud-url"]}>
               soundcloud icon
-            </a>
+            </a> */}
             <a className="lyrics-link" href={song.lyricUrl}>
               View Lyrics
             </a>
           </section>
+          
+      
         </div>
       )}
     </div>

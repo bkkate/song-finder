@@ -1,16 +1,51 @@
 .box{
-    color: #777;
+    color: rgb(61, 60, 60);
     display: flex;
-    justify-content: center;
+    /* justify-content: center; */
+    flex-direction: column;
+    border: 1px solid #abaaaa;
+    border-radius: 10px;
+    padding: 30px 10px;
+    margin: 30px 40px;
+}
+
+section{
+  align-self: center;
+}
+
+.header{
+  display: flex;
+  font-weight: 600;
+  font-size: 1.5em;
+  color: #103783;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.header .icon {
+  margin: 3px 3px 3px 5px;
+  padding: 1px;
+}
+
+.text {
+  margin-bottom: 14px;
+}
+
+.text div {
+  text-align: center;
 }
 
 .search-section {
-  width: 80%;
+  color: #777;
+  width: 90%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   text-align: center;
 }
+
 
 .input-container {
   width: 100%;

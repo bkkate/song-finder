@@ -6,7 +6,7 @@ import "../style/Tracks.css";
 const Tracks = ({spotifySongs}) => {
   const { tracks } = useContext(Context);
 
-  console.log(spotifySongs);
+  // console.log(spotifySongs);
   const renderedItems = tracks.length // was tracks updated (has the user searched something)?
     ? tracks.map((item, index) => {
         const songData = item.result;
@@ -23,7 +23,9 @@ const Tracks = ({spotifySongs}) => {
           />
         );
       })
-    : spotifySongs.length
+      // since spotifySongs are updated in useEffect (=== state updated AFTER initial render)
+      // it'll display nothing briefly, then once state is updated, re-rendering will happen to display songs at second render
+    : spotifySongs.length 
     ? spotifySongs.map((song, index) => {
         const songData = song.track;
         return (
